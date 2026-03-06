@@ -1,0 +1,89 @@
+.insurance-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+  transition: box-shadow 0.2s ease;
+}
+
+.insurance-card:hover {
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.insurance-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.insurance-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.insurance-card-body {
+  padding: 1.2rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.insurance-card-body .insurance-card-features {
+  flex-grow: 1;
+}
+
+.insurance-card-tagline,
+.insurance-card-price {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.insurance-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+  color: #1e293b;
+}
+
+.insurance-card-best-for {
+  margin: 0 0 0.75rem;
+  font-size: 0.88rem;
+  color: #64748b;
+}
+
+.insurance-card-features {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+  color: #475569;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.insurance-card-features li {
+  margin-bottom: 0.3rem;
+}
+
+.insurance-card-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.insurance-card-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}

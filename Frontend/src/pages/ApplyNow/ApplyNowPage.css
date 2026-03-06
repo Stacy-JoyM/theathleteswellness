@@ -1,0 +1,27 @@
+.apply-now-page {
+  width: min(var(--max-content-width, 1120px), 100% - 2rem);
+  margin: 1.5rem auto 2rem;
+}
+
+.apply-now-page .page-hero {
+  margin-bottom: 1rem;
+}
+
+.apply-now-packages {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .apply-now-packages {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .apply-now-packages {
+    grid-template-columns: 1fr;
+  }
+}
