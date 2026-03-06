@@ -246,7 +246,7 @@ export const ABOUT_PAGE = {
     {
       id: 'liaison',
       name: 'Liaison Multi-Family Office Services',
-      description: 'Take your membership beyond wellness into wealth structuring, preservation, and growth. In partnership with Liaison Group, the Club offers access to premium Family Office solutions. Choose from Trust Incorporation & Investment Advisory—setting up a formal trust to protect and manage your assets for future generations—or Investment Advisory Services for personalised guidance on building and managing your investment portfolio. Ideal for athletes who want to secure their financial future alongside their physical and health wellness.',
+      description: 'Take your membership beyond wellness into wealth structuring, preservation, and growth. In partnership with Liaison Wealth, the Club offers access to premium Family Office solutions. Choose from Trust Incorporation & Investment Advisory—setting up a family trust to protect and manage your assets for future generations—or Investment Advisory Services for personalised guidance on building and managing your investment portfolio. Ideal for athletes who want to secure their financial future alongside their physical and health wellness.',
     },
   ],
 }
