@@ -185,6 +185,296 @@
   display: block;
 }
 
+/* Wellness Showcase (after hero) */
+.home-wellness-showcase {
+  width: 100%;
+  margin-top: 0;
+  padding: 2.5rem 0 3rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 30%, #f1f5f9 100%);
+}
+
+.home-wellness-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.home-wellness-title {
+  margin: 0 0 1.75rem;
+  font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+  text-align: center;
+  position: relative;
+}
+
+.home-wellness-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 4px;
+  margin: 0.75rem auto 0;
+  background: linear-gradient(90deg, #0ea5e9, #0284c7);
+  border-radius: 2px;
+}
+
+/* Nav bar wrapper: matches section background for seamless blend */
+.home-wellness-nav-wrap {
+  background: transparent;
+  padding: 1.75rem 0 0;
+}
+
+/* Horizontal row of equal-width tabs - active extends down, aligns to bottom */
+.home-wellness-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  width: 100%;
+  min-height: 150px;
+  overflow: hidden;
+}
+
+.home-wellness-nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-width: 0;
+  height: 110px;
+  padding: 1.4rem 0.6rem;
+  border: none;
+  border-radius: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--tab-color, #1e40af);
+  cursor: pointer;
+  transition: height 0.3s ease, padding 0.3s ease, transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+}
+
+.home-wellness-nav-btn:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+}
+
+.home-wellness-nav-btn.is-active {
+  height: 150px;
+  padding: 2rem 0.6rem;
+  filter: brightness(1.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.wellness-nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.wellness-nav-icon svg {
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+}
+
+.home-wellness-nav-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-align: center;
+}
+
+/* Nav + content as one seamless block */
+.home-wellness-nav-content {
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.06),
+    0 10px 30px -5px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.home-wellness-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 520px;
+  margin: 0;
+}
+
+.home-wellness-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem 3rem;
+  background: var(--panel-color, #1e40af);
+  background-image: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.06) 100%
+  );
+  color: #ffffff;
+  transition: background 0.35s ease;
+  animation: wellnessPanelFade 0.4s ease-out;
+}
+
+@keyframes wellnessPanelFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-wellness-kicker {
+  margin: 0 0 0.85rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.home-wellness-desc {
+  margin: 0 0 1.75rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 44ch;
+  opacity: 0.98;
+}
+
+.home-wellness-learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  padding: 0.85rem 1.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  transition: all 0.25s ease;
+}
+
+.home-wellness-learn-more::after {
+  content: '→';
+  margin-left: 0.25rem;
+  font-weight: 600;
+  transition: transform 0.25s ease;
+}
+
+.home-wellness-learn-more:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.home-wellness-learn-more:hover::after {
+  transform: translateX(4px);
+}
+
+.home-wellness-image {
+  overflow: hidden;
+  min-height: 380px;
+  position: relative;
+}
+
+.home-wellness-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.15) 0%,
+    transparent 40%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.home-wellness-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .home-wellness-nav {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .home-wellness-nav {
+    min-height: 120px;
+  }
+
+  .home-wellness-nav-btn {
+    flex: 0 0 min(160px, 24vw);
+    height: 95px;
+    padding: 1.25rem 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .home-wellness-nav-btn.is-active {
+    height: 120px;
+    padding: 1.6rem 0.5rem;
+  }
+
+  .wellness-nav-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 800px) {
+  .home-wellness-showcase {
+    padding: 2rem 0 2.5rem;
+  }
+
+  .home-wellness-content {
+    grid-template-columns: 1fr;
+  }
+
+  .home-wellness-panel {
+    padding: 2rem 1.5rem;
+  }
+
+  .home-wellness-image {
+    min-height: 300px;
+  }
+
+  .home-wellness-image::before {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      transparent 50%
+    );
+  }
+
+  .home-wellness-nav-wrap {
+    padding: 1.25rem 0 0;
+  }
+}
+
 .home-content-section,
 .home-packages-section,
 .home-process-section,

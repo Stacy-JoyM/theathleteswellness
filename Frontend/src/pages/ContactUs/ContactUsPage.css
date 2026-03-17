@@ -130,3 +130,22 @@
     font-size: 1rem;
   }
 }
+
+@media (max-width: 600px) {
+  .contact-page {
+    width: 100%;
+    margin: 0.5rem 0 1rem;
+  }
+
+  .contact-hero {
+    height: 140px;
+  }
+
+  .contact-title {
+    font-size: 1.5rem;
+  }
+
+  .contact-columns {
+    padding: 1rem;
+  }
+}

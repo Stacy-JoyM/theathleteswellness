@@ -3,7 +3,7 @@
  */
 
 export const CONTACT = {
-  email: 'theathleteswellnessclub@gmail.com',
+  email: 'info@tawc.co.ke',
   phonePrimary: '+254 745 331 439',
   phoneSecondary: '+254 745 331 439',
   phoneDisplay: '+254 745 331 439',
@@ -22,17 +22,49 @@ export const NAV_LINKS = {
     { label: 'Learn Wellness Deals', href: '/insurance-deals' },
   ],
   main: [
-    { label: 'Privacy Policy', href: '/privacy-policy' },
     { label: 'FAQ Section', href: '/faq' },
     { label: 'Contact Us', href: '/contact-us' },
   ],
+}
+
+export const WHO_ARE_WE = {
+  title: 'Who We Are',
+  tagline: 'Two leaders. One mission. Your wellness.',
+  intro: 'The Athletes Wellness Club is a strategic partnership built to serve athletes at every stage of their journey.',
+  partners: [
+    {
+      name: 'Momentum Sports Africa',
+      role: 'Sporting Company',
+      description: 'A leading sporting company dedicated to supporting athletes across the region. Momentum Sports Africa understands the unique challenges athletes face—from training and competition to career transitions. We connect athletes with opportunities, resources, and a community that champions their success both on and off the field.',
+      logoFile: 'momentum_icon.png',
+      highlights: ['Athlete-focused', 'Regional reach', 'Community & opportunity'],
+    },
+    {
+      name: 'Liaison Group',
+      role: 'Insurance & Wellness Provider',
+      description: 'Liaison Group provides the insurance and wellness solutions that power our membership packages. With expertise in risk management, health cover, and financial wellness, Liaison ensures athletes have access to comprehensive protection—personal accident, healthcare, family office services—all tailored to the demands of an active lifestyle.',
+      logoFile: 'liaison_icon.png',
+      highlights: ['Insurance expertise', 'Wellness solutions', 'Family office services'],
+    },
+  ],
+  partnership: {
+    title: 'A Partnership for Athletes',
+    description: 'Together, this partnership is designed to serve the best interests of athletes—delivering comprehensive health cover, financial wellness, and peace of mind so you can focus on what matters most: your performance and your future.',
+    benefits: [
+      'Health cover that grows with you',
+      'Financial wellness beyond the game',
+      'Peace of mind for you and your family',
+    ],
+  },
 }
 
 export const FOOTER_LINKS = {
   insurance: NAV_LINKS.insurance,
   main: [
     { label: 'Apply Now', href: '/apply-now' },
+    { label: 'Who We Are', href: '/who-are-we' },
     { label: 'Privacy Policy', href: '/privacy-policy' },
+    { label: 'Terms and Conditions', href: '/terms-and-conditions' },
     { label: 'FAQ Section', href: '/faq' },
     { label: 'Contact Us', href: '/contact-us' },
   ],
@@ -69,6 +101,10 @@ export const INSURANCE_PACKAGES = [
       'Last Expense Cover: KES 100,000',
       'Inpatient: KES 250,000',
       'Outpatient: KES 50,000',
+      'Maternity: KES 40,000',
+      'Dental: KES 10,000',
+      'Optical: KES 10,000',
+      'Sporting Equipment: KES 50,000',
       'Annual Cash Back: KES 12,000',
     ],
   },
@@ -94,6 +130,10 @@ export const INSURANCE_PACKAGES = [
       'Personal Accident Cover: KES 200,000',
       'Last Expense Cover: KES 150,000',
       'Inpatient: KES 300,000',
+      'Outpatient: KES 50,000',
+      'Maternity: KES 40,000',
+      'Dental: KES 10,000',
+      'Optical: KES 10,000',
       'Sporting Equipment: KES 75,000',
       'Annual Cash Back: KES 36,000',
     ],
@@ -120,6 +160,10 @@ export const INSURANCE_PACKAGES = [
       'Personal Accident Cover: KES 300,000',
       'Last Expense Cover: KES 200,000',
       'Inpatient: KES 500,000',
+      'Outpatient: KES 75,000',
+      'Maternity: KES 50,000',
+      'Dental: KES 15,000',
+      'Optical: KES 15,000',
       'Sporting Equipment: KES 100,000',
       'Annual Cash Back: KES 60,000',
     ],
@@ -145,8 +189,12 @@ export const INSURANCE_PACKAGES = [
     features: [
       'Personal Accident Cover: KES 400,000',
       'Last Expense Cover: KES 300,000',
+      'Inpatient: KES 500,000',
+      'Outpatient: KES 75,000',
+      'Maternity: KES 50,000',
+      'Dental: KES 15,000',
+      'Optical: KES 15,000',
       'Sporting Equipment: KES 125,000',
-      'Maximum inpatient cover',
       'Annual Cash Back: KES 120,000',
     ],
   },
@@ -175,20 +223,20 @@ export const FORM_PACKAGE_OPTIONS = [
 export const INSURANCE_DEAL_CARDS = INSURANCE_PACKAGES.map((pkg) => ({
   title: pkg.name,
   summary: pkg.tagline,
-  details: [...pkg.features, `Ideal for ${pkg.bestFor.toLowerCase()}`],
+  details: pkg.features,
 }))
 
 export const COMPARISON_ROWS = [
-  { label: 'Personal Accident Cover', suswa: '100,000', longonot: '200,000', elgon: '300,000', kenya: '400,000' },
-  { label: 'Last Expense Cover', suswa: '100,000', longonot: '150,000', elgon: '200,000', kenya: '300,000' },
-  { label: 'Inpatient', suswa: '250,000', longonot: '300,000', elgon: '500,000', kenya: '500,000' },
-  { label: 'Outpatient', suswa: '50,000', longonot: '50,000', elgon: '75,000', kenya: '75,000' },
-  { label: 'Maternity', suswa: '40,000', longonot: '40,000', elgon: '50,000', kenya: '50,000' },
-  { label: 'Dental', suswa: '10,000', longonot: '10,000', elgon: '15,000', kenya: '15,000' },
-  { label: 'Optical', suswa: '10,000', longonot: '10,000', elgon: '15,000', kenya: '15,000' },
-  { label: 'Sporting Equipment', suswa: '50,000', longonot: '75,000', elgon: '100,000', kenya: '125,000' },
-  { label: 'Annual Subscription', suswa: '37,100', longonot: '70,050', elgon: '103,150', kenya: '164,950', isSubtotal: true },
-  { label: 'Annual Cash Back', suswa: '12,000', longonot: '36,000', elgon: '60,000', kenya: '120,000', isCashBack: true },
+  { label: 'Personal Accident', suswa: 'KES 100,000', longonot: 'KES 200,000', elgon: 'KES 300,000', kenya: 'KES 400,000' },
+  { label: 'Last Expense', suswa: 'KES 100,000', longonot: 'KES 150,000', elgon: 'KES 200,000', kenya: 'KES 300,000' },
+  { label: 'Inpatient Cover', suswa: 'KES 250,000', longonot: 'KES 300,000', elgon: 'KES 500,000', kenya: 'KES 500,000' },
+  { label: 'Outpatient', suswa: 'KES 50,000', longonot: 'KES 50,000', elgon: 'KES 75,000', kenya: 'KES 75,000' },
+  { label: 'Maternity', suswa: 'KES 40,000', longonot: 'KES 40,000', elgon: 'KES 50,000', kenya: 'KES 50,000' },
+  { label: 'Dental', suswa: 'KES 10,000', longonot: 'KES 10,000', elgon: 'KES 15,000', kenya: 'KES 15,000' },
+  { label: 'Optical', suswa: 'KES 10,000', longonot: 'KES 10,000', elgon: 'KES 15,000', kenya: 'KES 15,000' },
+  { label: 'Sporting Equipment', suswa: 'KES 50,000', longonot: 'KES 75,000', elgon: 'KES 100,000', kenya: 'KES 125,000' },
+  { label: 'Annual Subscription', suswa: 'KES 37,100', longonot: 'KES 70,050', elgon: 'KES 103,150', kenya: 'KES 164,950', isSubtotal: true },
+  { label: 'Annual Cash Back', suswa: 'KES 12,000', longonot: 'KES 36,000', elgon: 'KES 60,000', kenya: 'KES 120,000', isCashBack: true },
 ]
 
 export const LIAISON_FAMILY_OFFICE = {
@@ -198,22 +246,37 @@ export const LIAISON_FAMILY_OFFICE = {
   services: [
     {
       name: 'Trust Incorporation & Investment Advisory',
-      description: 'Set up a formal trust structure to hold and manage your assets. A trust helps protect your wealth, plan for future generations, and ensure your family is taken care of according to your wishes. Our advisors guide you through the setup and ongoing investment strategy.',
+      description: 'Set up a Family Trust to invest your wealth and protect your assets. A Trust helps you manage your assets to cater for your family\'s and future generations\' needs as you wish. Our private wealth advisors guide you through the on-boarding process and investment strategy.',
       items: [
-        'One-off onboarding fee: KES 100,000',
-        'Minimum investment: KES 500,000',
+        'One-off on-boarding fees: KES 100,000',
+        'Minimum investment fund: KES 500,000',
+        'Annual management fees: 2.45%/p.a.',
       ],
     },
     {
       name: 'Investment Advisory Services',
-      description: 'Receive personalised investment advice without setting up a trust. Ideal if you want expert guidance on where and how to invest your savings, with a dedicated advisor helping you build and manage a portfolio aligned with your goals and risk tolerance.',
+      description: 'Receive personalized investment advice without setting up a Trust. Our investment analysts shall give you expert guidance on portfolio allocations that align with your risk tolerance profile and investment objectives.',
       items: [
-        'One-off onboarding fee: KES 35,000',
-        'Minimum investment: KES 500,000',
+        'One-off on-boarding fees: KES 100,000',
+        'Minimum investment fund: KES 500,000',
+        'Annual management fees: 2.45%/p.a.',
       ],
     },
   ],
   disclaimer: '*Annual Management Fee is 2.45% of the productive assets',
+}
+
+/** Liaison Pension section for application form */
+export const LIAISON_PENSION = {
+  title: 'Liaison Pension',
+  highlight: '4% guaranteed annual return',
+  details: [
+    'Individual Pension Plan (IPP) with tax-efficient savings for your retirement.',
+    'Access to Trust Incorporation & Investment Advisory for wealth structuring.',
+    'Minimum investment fund: KES 500,000. Annual management fees: 2.45%/p.a.',
+    'Professional wealth management and family office services tailored for athletes.',
+  ],
+  checkboxLabel: 'Add me on the contact list for this investment/saving wellness plan',
 }
 
 export const AOB_TAGLINE = 'Insurance built for athletes — Start your journey today'
@@ -254,7 +317,7 @@ export const ABOUT_PAGE = {
 export const CONTACT_PAGE = {
   name: 'Athlete Wellness Club',
   logoFile: 'tawc_logo.png',
-  email: 'theathleteswellnessclub@gmail.com',
+  email: 'info@tawc.co.ke',
   phones: '+254 745 331 439',
 }
 

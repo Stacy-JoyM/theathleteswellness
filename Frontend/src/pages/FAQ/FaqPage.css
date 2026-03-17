@@ -82,3 +82,18 @@
   color: #475569;
   line-height: 1.55;
 }
+
+@media (max-width: 600px) {
+  .faq-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .faq-page h1 {
+    font-size: 1.5rem;
+  }
+
+  .faq-question {
+    padding: 0.85rem 2.5rem 0.85rem 1rem;
+    font-size: 0.95rem;
+  }
+}

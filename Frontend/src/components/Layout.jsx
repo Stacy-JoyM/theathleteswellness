@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import Footer from './Footer.jsx'
 import { CONTACT, NAV_LINKS, AOB_TAGLINE } from '../constants'
@@ -20,6 +20,20 @@ function Layout() {
   const logoPath = getAssetUrl('tawc_logo.png')
   const location = useLocation()
   const insuranceActive = insuranceNavigation.some((item) => location.pathname === item.href)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  useEffect(() => {
+    setMobileMenuOpen(false)
+  }, [location.pathname])
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [mobileMenuOpen])
 
   return (
     <div className="app-shell">
@@ -40,7 +54,25 @@ function Layout() {
             alt="TAWC - Athletes Wellness Club"
           />
           </NavLink>
-        <nav className="header-nav">
+        <button
+          type="button"
+          className="header-mobile-toggle"
+          aria-label="Toggle menu"
+          aria-expanded={mobileMenuOpen}
+          onClick={() => setMobileMenuOpen((o) => !o)}
+        >
+          <span className="header-mobile-toggle-bar" />
+          <span className="header-mobile-toggle-bar" />
+          <span className="header-mobile-toggle-bar" />
+        </button>
+        {mobileMenuOpen && (
+          <div
+            className="header-nav-backdrop"
+            aria-hidden
+            onClick={() => setMobileMenuOpen(false)}
+          />
+        )}
+        <nav className={`header-nav ${mobileMenuOpen ? 'is-open' : ''}`}>
           <ul className="nav-list">
             <li>
               <NavLink

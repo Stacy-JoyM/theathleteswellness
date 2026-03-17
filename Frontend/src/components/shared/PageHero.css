@@ -28,3 +28,14 @@
   max-width: 70ch;
   line-height: 1.55;
 }
+
+@media (max-width: 600px) {
+  .page-hero {
+    padding: 1.5rem 1rem;
+    width: calc(100% - 1rem);
+  }
+
+  .page-hero h1 {
+    font-size: 1.35rem;
+  }
+}

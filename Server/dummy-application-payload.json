@@ -1,0 +1,93 @@
+{
+  "productType": "msa",
+  "orderNumber": "1",
+  "joiningDate": "2025-03-16",
+  "policyDuration": "12",
+  "personalAccidentAmount": 100000,
+  "lastExpenseAmount": 100000,
+  "inpatientAmount": 250000,
+  "outpatientAmount": 50000,
+  "maternityAmount": 40000,
+  "dentalAmount": 10000,
+  "opticalAmount": 10000,
+  "annualCashBack": 12000,
+  "sportingEquipment": 50000,
+  "premiumAmount": 37100,
+  "mpesaNumber": "254722321623",
+  "principal": [
+    {
+      "name": "Peterson David",
+      "dob": "1991-03-24",
+      "nationalId": "23456787",
+      "kraPinNo": "P123456789X",
+      "phoneNumber": "254722321623",
+      "emailAddress": "mkimani@liaisongroup.net",
+      "gender": "Male"
+    }
+  ],
+  "spouse": [
+    {
+      "name": "Nancy Atieno",
+      "dob": "1992-01-04",
+      "gender": "Female"
+    }
+  ],
+  "children": [
+    {
+      "name": "Kevin James",
+      "birthCertNo": "23456787",
+      "gender": "Male",
+      "dob": "2011-01-04"
+    },
+    {
+      "name": "Irene Eunice",
+      "birthCertNo": "23456788",
+      "gender": "Female",
+      "dob": "2010-01-04"
+    }
+  ],
+  "parent": [
+    {
+      "name": "James Ochieng",
+      "nationalId": "12345678",
+      "gender": "Male",
+      "dob": "1967-01-04"
+    },
+    {
+      "name": "Mary Wanjiku",
+      "nationalId": "12345679",
+      "gender": "Female",
+      "dob": "1971-01-04"
+    }
+  ],
+  "parentInLaw": [
+    {
+      "name": "Edward Otieno",
+      "nationalId": "87654321",
+      "gender": "Male",
+      "dob": "1964-01-04"
+    },
+    {
+      "name": "Judy Adhiambo",
+      "nationalId": "87654322",
+      "gender": "Female",
+      "dob": "1972-01-04"
+    }
+  ],
+  "equipment": [
+    {
+      "name": "Golf Stick",
+      "makeName": "Puma",
+      "model": "P900",
+      "quantity": 1,
+      "equipmentValue": 3000
+    },
+    {
+      "name": "Golf Stick",
+      "makeName": "Nike",
+      "model": "A345",
+      "quantity": 2,
+      "equipmentValue": 2000
+    }
+  ]
+}

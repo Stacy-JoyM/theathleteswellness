@@ -21,9 +21,6 @@ export default function InsuranceCard({ plan, imageUrl, ctaText = 'Apply Now', c
         <p className="insurance-card-tagline">{plan.tagline}</p>
         <h2>{plan.name}</h2>
         <p className="insurance-card-price">{plan.monthlyRange}</p>
-        <p className="insurance-card-best-for">
-          <strong>Best for:</strong> {plan.bestFor}
-        </p>
         <ul className="insurance-card-features">
           {plan.features.map((feature) => (
             <li key={feature}>{feature}</li>

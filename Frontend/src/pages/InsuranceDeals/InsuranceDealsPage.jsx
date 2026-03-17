@@ -1,4 +1,3 @@
-import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { INSURANCE_DEAL_CARDS, COMPARISON_ROWS, LIAISON_FAMILY_OFFICE } from '../../constants'
 import PageHero from '../../components/shared/PageHero'
@@ -40,43 +39,59 @@ export default function InsuranceDealsPage() {
       <section className="insurance-deals-liaison-row">
         <h2 className="insurance-deals-liaison-title">{LIAISON_FAMILY_OFFICE.title}</h2>
         <p className="insurance-deals-liaison-intro">{LIAISON_FAMILY_OFFICE.clientIntro}</p>
-        <div className="insurance-deals-liaison-services">
+        <div className="insurance-deals-liaison-content">
           {LIAISON_FAMILY_OFFICE.services.map((service) => (
-            <article key={service.name} className="insurance-deals-liaison-service">
+            <div key={service.name} className="insurance-deals-liaison-service">
               <h3>{service.name}</h3>
-              <p className="insurance-deals-liaison-service-desc">{service.description}</p>
+              <p>{service.description}</p>
               <ul>
                 {service.items.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-            </article>
+            </div>
           ))}
         </div>
         <p className="insurance-deals-liaison-disclaimer">{LIAISON_FAMILY_OFFICE.disclaimer}</p>
-        <Link to="/apply-now" state={{ planId: 'liaison-family-office' }} className="insurance-deals-liaison-apply">
-          Apply for Family Office Services
-        </Link>
+        <div className="insurance-deals-liaison-actions">
+          <Link to="/contact-us" className="insurance-deals-liaison-advisor">
+            Talk to Advisor
+          </Link>
+        </div>
       </section>
 
       <section className="insurance-compare-section">
-        <h2>Quick Comparison</h2>
-        <div className="insurance-compare-grid insurance-compare-grid--5col">
-          <div className="insurance-compare-head">Membership Category</div>
-          <div className="insurance-compare-head">Suswa</div>
-          <div className="insurance-compare-head">Longonot</div>
-          <div className="insurance-compare-head">Elgon</div>
-          <div className="insurance-compare-head">Kenya</div>
-
-          {COMPARISON_ROWS.map((row) => (
-            <Fragment key={row.label}>
-              <div className={`insurance-compare-label ${row.isSubtotal ? 'insurance-compare-cell--subtotal' : ''} ${row.isCashBack ? 'insurance-compare-cell--cashback' : ''}`}>{row.label}</div>
-              <div className={`insurance-compare-cell ${row.isSubtotal ? 'insurance-compare-cell--subtotal' : ''} ${row.isCashBack ? 'insurance-compare-cell--cashback' : ''}`}>{row.suswa}</div>
-              <div className={`insurance-compare-cell ${row.isSubtotal ? 'insurance-compare-cell--subtotal' : ''} ${row.isCashBack ? 'insurance-compare-cell--cashback' : ''}`}>{row.longonot}</div>
-              <div className={`insurance-compare-cell ${row.isSubtotal ? 'insurance-compare-cell--subtotal' : ''} ${row.isCashBack ? 'insurance-compare-cell--cashback' : ''}`}>{row.elgon}</div>
-              <div className={`insurance-compare-cell ${row.isSubtotal ? 'insurance-compare-cell--subtotal' : ''} ${row.isCashBack ? 'insurance-compare-cell--cashback' : ''}`}>{row.kenya}</div>
-            </Fragment>
-          ))}
+        <h2>Compare Packages at a Glance</h2>
+        <p className="insurance-compare-intro">See how our wellness packages stack up. All amounts in KES.</p>
+        <div className="insurance-compare-table-wrap">
+          <table className="insurance-compare-table">
+            <thead>
+              <tr>
+                <th scope="col">Cover & Benefits</th>
+                <th scope="col">Suswa</th>
+                <th scope="col">Longonot</th>
+                <th scope="col">Elgon</th>
+                <th scope="col">Kenya</th>
+              </tr>
+            </thead>
+            <tbody>
+              {COMPARISON_ROWS.map((row) => (
+                <tr
+                  key={row.label}
+                  className={`${row.isSubtotal ? 'insurance-compare-row--subtotal' : ''} ${row.isCashBack ? 'insurance-compare-row--cashback' : ''}`}
+                >
+                  <th scope="row">{row.label}</th>
+                  <td>{row.suswa}</td>
+                  <td>{row.longonot}</td>
+                  <td>{row.elgon}</td>
+                  <td>{row.kenya}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="insurance-compare-cta">
+          <Link to="/apply-now" className="insurance-compare-apply-btn">Apply Now</Link>
         </div>
       </section>
 

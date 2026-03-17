@@ -3,6 +3,108 @@
   margin: 1.5rem auto 2rem;
 }
 
+.apply-now-success {
+  margin-top: 2rem;
+  padding: 3rem 2rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.apply-now-success-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, #059669, #047857);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 64px;
+  border-radius: 50%;
+}
+
+.apply-now-success-title {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.apply-now-success-message {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.apply-now-success-note {
+  margin: 0 0 2rem;
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+.apply-now-success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.apply-now-success-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  font-family: inherit;
+}
+
+.apply-now-success-btn-primary {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #fff;
+}
+
+.apply-now-success-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+}
+
+.apply-now-success-btn-secondary {
+  background: #fff;
+  color: #0284c7;
+  border: 2px solid #0284c7;
+}
+
+.apply-now-success-btn-secondary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+}
+
+.apply-now-error-banner {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #991b1b;
+}
+
+.apply-now-error-banner p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.apply-now-error-hint {
+  margin-top: 0.5rem !important;
+  font-size: 0.875rem !important;
+  color: #b91c1c !important;
+}
+
 .apply-now-page .page-hero {
   margin-bottom: 1rem;
 }
@@ -14,6 +116,98 @@
   gap: 1rem;
 }
 
+.apply-now-liaison {
+  margin-top: 1.5rem;
+  padding: 1.75rem 2rem;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid #bae6fd;
+  border-radius: 12px;
+}
+
+.apply-now-liaison h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0284c7;
+}
+
+.apply-now-liaison h4 {
+  margin: 1rem 0 0.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.apply-now-liaison p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.apply-now-liaison-service {
+  margin-top: 0.5rem;
+}
+
+.apply-now-liaison ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.apply-now-liaison li {
+  margin-bottom: 0.35rem;
+}
+
+.apply-now-liaison-disclaimer {
+  margin: 1rem 0 1rem;
+  font-size: 0.85rem;
+  color: #0369a1;
+}
+
+.apply-now-liaison-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.apply-now-liaison-cta {
+  display: inline-block;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.apply-now-liaison-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+}
+
+.apply-now-liaison-advisor {
+  display: inline-block;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0284c7;
+  background: #ffffff;
+  border: 2px solid #0284c7;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.apply-now-liaison-advisor:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+}
+
 @media (max-width: 900px) {
   .apply-now-packages {
     grid-template-columns: repeat(2, minmax(220px, 1fr));
@@ -23,5 +217,20 @@
 @media (max-width: 700px) {
   .apply-now-packages {
     grid-template-columns: 1fr;
+  }
+
+  .apply-now-page {
+    width: min(var(--max-content-width, 1120px), 100% - 1rem);
+    margin: 1rem auto 1.5rem;
+  }
+
+  .apply-now-liaison {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .apply-now-page {
+    margin: 0.75rem auto 1rem;
   }
 }

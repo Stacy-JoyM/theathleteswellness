@@ -57,3 +57,25 @@
 .cta-section-secondary:hover {
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
+
+@media (max-width: 600px) {
+  .cta-section {
+    padding: 1.25rem 1rem;
+    margin: 1rem auto;
+    width: calc(100% - 1rem);
+  }
+
+  .cta-section h2 {
+    font-size: 1.15rem;
+  }
+
+  .cta-section-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta-section-primary,
+  .cta-section-secondary {
+    text-align: center;
+  }
+}

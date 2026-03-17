@@ -1,0 +1,299 @@
+.who-are-we-page {
+  width: 100%;
+  background: #ffffff;
+}
+
+.who-are-we-hero {
+  position: relative;
+  padding: 3rem 1.5rem 4rem;
+  overflow: hidden;
+}
+
+.who-are-we-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 40%, #0284c7 100%);
+  opacity: 0.96;
+}
+
+.who-are-we-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 1;
+}
+
+.who-are-we-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  color: #ffffff;
+}
+
+.who-are-we-kicker {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.who-are-we-hero h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.who-are-we-intro {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.who-are-we-partners {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: -2rem auto 0;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.who-are-we-partner-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem 2.25rem;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.who-are-we-partner-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(15, 23, 42, 0.08);
+}
+
+.who-are-we-partner-card--left {
+  border-top: 4px solid #0d9488;
+}
+
+.who-are-we-partner-card--right {
+  border-top: 4px solid #1e40af;
+}
+
+.who-are-we-partner-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.who-are-we-partner-logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.who-are-we-partner-role {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0284c7;
+  margin-bottom: 0.25rem;
+}
+
+.who-are-we-partner-card h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.who-are-we-partner-desc {
+  margin: 0 0 1.25rem;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #475569;
+}
+
+.who-are-we-partner-highlights {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.who-are-we-partner-highlights li {
+  padding: 0.35rem 0.75rem;
+  background: #f1f5f9;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.who-are-we-bridge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 2rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.who-are-we-bridge-line {
+  flex: 1;
+  max-width: 200px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
+}
+
+.who-are-we-bridge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
+}
+
+.who-are-we-partnership {
+  max-width: 720px;
+  margin: 3rem auto 0;
+  padding: 0 1.5rem 3rem;
+  text-align: center;
+}
+
+.who-are-we-partnership h2 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.who-are-we-partnership-desc {
+  margin: 0 0 1.75rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #475569;
+}
+
+.who-are-we-benefits {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.who-are-we-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.who-are-we-benefit-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  color: #ffffff;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.who-are-we-cta {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border-top: 1px solid #e2e8f0;
+}
+
+.who-are-we-cta p {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.who-are-we-cta-button {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.who-are-we-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(2, 132, 199, 0.4);
+}
+
+@media (max-width: 768px) {
+  .who-are-we-partners {
+    grid-template-columns: 1fr;
+    margin-top: -1.5rem;
+    gap: 1.5rem;
+  }
+
+  .who-are-we-hero {
+    padding: 2.5rem 1rem 3rem;
+  }
+
+  .who-are-we-partner-card {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .who-are-we-partner-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 500px) {
+  .who-are-we-hero {
+    padding: 2rem 0.75rem 2.5rem;
+  }
+
+  .who-are-we-partner-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .who-are-we-partnership,
+  .who-are-we-cta {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

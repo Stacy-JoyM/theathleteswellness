@@ -37,23 +37,25 @@ export default function ProductPage() {
         <h2 className="product-liaison-kicker">Additional Exclusive Benefit</h2>
         <h3 className="product-liaison-title">{LIAISON_FAMILY_OFFICE.title}</h3>
         <p className="product-liaison-intro">{LIAISON_FAMILY_OFFICE.clientIntro}</p>
-        <div className="product-liaison-services">
+        <div className="product-liaison-content">
           {LIAISON_FAMILY_OFFICE.services.map((service) => (
-            <article key={service.name} className="product-liaison-service">
+            <div key={service.name} className="product-liaison-service">
               <h4>{service.name}</h4>
-              <p className="product-liaison-service-desc">{service.description}</p>
+              <p>{service.description}</p>
               <ul>
                 {service.items.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-            </article>
+            </div>
           ))}
         </div>
         <p className="product-liaison-disclaimer">{LIAISON_FAMILY_OFFICE.disclaimer}</p>
-        <Link to="/apply-now" state={{ planId: 'liaison-family-office' }} className="product-liaison-apply">
-          Apply for Family Office Services
-        </Link>
+        <div className="product-liaison-actions">
+          <Link to="/contact-us" className="product-liaison-advisor">
+            Talk to Advisor
+          </Link>
+        </div>
       </section>
 
       <section className="insurance-process-section">

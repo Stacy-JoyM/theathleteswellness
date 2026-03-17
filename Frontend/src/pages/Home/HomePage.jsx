@@ -1,8 +1,52 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { PARTNERS, CORE_PILLARS, ABOUT_PAGE } from '../../constants'
+import { PARTNERS, ABOUT_PAGE } from '../../constants'
 import { getAssetUrl } from '../../utils/assets'
 import './HomePage.css'
+
+const WELLNESS_TABS = [
+  { id: 'suswa', name: 'Suswa', color: '#1e40af' },
+  { id: 'longonot', name: 'Longonot', color: '#0d9488' },
+  { id: 'elgon', name: 'Elgon', color: '#7c3aed' },
+  { id: 'kenya', name: 'Kenya', color: '#16a34a' },
+  { id: 'liaison', name: 'Family Office', color: '#374151' },
+]
+
+const WellnessNavIcon = ({ id }) => (
+  <span className="wellness-nav-icon" aria-hidden>
+    {id === 'suswa' && (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    )}
+    {id === 'longonot' && (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+        <polyline points="17 6 23 6 23 12" />
+      </svg>
+    )}
+    {id === 'elgon' && (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      </svg>
+    )}
+    {id === 'kenya' && (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+        <path d="M4 22h16" />
+        <path d="M10 15V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+        <path d="M14 15V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+      </svg>
+    )}
+    {id === 'liaison' && (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2L2 12l10 10 10-10L12 2z" />
+      </svg>
+    )}
+  </span>
+)
 
 const homeHighlights = [
   { title: 'Tiered protection that grows with you' },
@@ -32,6 +76,9 @@ const homeSteps = [
 function HomePage() {
   const heroBackgrounds = [getAssetUrl('kenyan_sport_win.png'), getAssetUrl('kenya_sport_win2.jpg')]
   const [activeHeroIndex, setActiveHeroIndex] = useState(0)
+  const [activeWellnessTab, setActiveWellnessTab] = useState('suswa')
+
+  const activePackage = ABOUT_PAGE.packages.find((p) => p.id === activeWellnessTab) ?? ABOUT_PAGE.packages[0]
 
   useEffect(() => {
     const slideInterval = window.setInterval(() => {
@@ -82,25 +129,43 @@ function HomePage() {
         </section>
       </section>
 
-      <section className="home-packages-section">
-        <h2>Our Wellness Packages</h2>
-        <p className="home-packages-intro">
-          The Athletes Wellness Club is built around four core pillars designed to support your
-          health, security, and long-term prosperity:
-        </p>
-        <ul className="home-packages-pillars">
-          {CORE_PILLARS.map((pillar) => (
-            <li key={pillar}>{pillar}</li>
-          ))}
-        </ul>
-        <div className="home-packages-list">
-          {ABOUT_PAGE.packages.map((pkg, index) => (
-            <article key={pkg.id} className="home-package-card">
-              <span className="home-package-num">{String(index + 1).padStart(2, '0')}</span>
-              <h3 className="home-package-name">{pkg.name}</h3>
-              <p className="home-package-desc">{pkg.description}</p>
-            </article>
-          ))}
+      <section className="home-wellness-showcase">
+        <div className="home-wellness-inner">
+          <h2 className="home-wellness-title">Our Wellness Packages</h2>
+          <div className="home-wellness-nav-wrap">
+            <div className="home-wellness-nav-content">
+              <nav className="home-wellness-nav" aria-label="Wellness package categories">
+                {WELLNESS_TABS.map((tab) => (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    className={`home-wellness-nav-btn ${activeWellnessTab === tab.id ? 'is-active' : ''}`}
+                    style={{ '--tab-color': tab.color }}
+                    onClick={() => setActiveWellnessTab(tab.id)}
+                  >
+                    <WellnessNavIcon id={tab.id} />
+                    <span className="home-wellness-nav-label">{tab.name}</span>
+                  </button>
+                ))}
+              </nav>
+              <div className="home-wellness-content">
+                <div
+                  key={activeWellnessTab}
+                  className="home-wellness-panel"
+                  style={{ '--panel-color': WELLNESS_TABS.find((t) => t.id === activeWellnessTab)?.color ?? '#1e40af' }}
+                >
+                  <p className="home-wellness-kicker">About {activePackage.name}</p>
+                  <p className="home-wellness-desc">{activePackage.description}</p>
+                  <Link className="home-wellness-learn-more" to="/insurance-deals">
+                    Learn More
+                  </Link>
+                </div>
+                <div className="home-wellness-image">
+                  <img src={heroBackgrounds[0]} alt="Athlete wellness" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
