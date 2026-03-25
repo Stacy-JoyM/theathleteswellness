@@ -307,7 +307,7 @@ export const ABOUT_PAGE = {
       intro: 'Suswa is designed for entry level athletes.',
       withinPlay: {
         beforeLink:
-          'This wellness package contains wellness support for all medical needs and sporting equipment cover to allow you to keep your head in the game, at Suswa entry limits—',
+          'This wellness package contains wellness support for all medical needs and sporting equipment cover to allow you to keep your head in the game—',
         showPackageBreakdownLink: true,
         afterLink: ' for amounts.',
       },
