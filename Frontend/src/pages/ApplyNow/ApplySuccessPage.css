@@ -1,0 +1,120 @@
+.apply-success-page {
+  width: min(var(--max-content-width, 1120px), 100% - 2rem);
+  margin: 1.5rem auto 2rem;
+}
+
+.apply-success-card {
+  margin-top: 2rem;
+  padding: 3rem 2rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.apply-success-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, #059669, #047857);
+  color: #fff;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 72px;
+  border-radius: 50%;
+}
+
+.apply-success-title {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.4;
+}
+
+.apply-success-message {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.apply-success-note {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+.apply-success-thankyou {
+  margin: 0 0 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.apply-success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.apply-success-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  font-family: inherit;
+}
+
+.apply-success-btn-primary {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #fff;
+}
+
+.apply-success-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+}
+
+.apply-success-btn-secondary {
+  background: #fff;
+  color: #0284c7;
+  border: 2px solid #0284c7;
+}
+
+.apply-success-btn-secondary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+}
+
+@media (max-width: 500px) {
+  .apply-success-card {
+    padding: 2rem 1.25rem;
+  }
+
+  .apply-success-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.75rem;
+    line-height: 60px;
+  }
+
+  .apply-success-title {
+    font-size: 1.25rem;
+  }
+
+  .apply-success-actions {
+    flex-direction: column;
+  }
+
+  .apply-success-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -252,3 +252,59 @@
     gap: 0.5rem;
   }
 }
+
+@media (max-width: 480px) {
+  .privacy-page {
+    width: min(1120px, 100% - 1rem);
+    margin: 1rem auto 1.5rem;
+  }
+
+  .privacy-hero {
+    padding: 1.25rem 1rem;
+  }
+
+  .privacy-hero h1 {
+    font-size: 1.35rem;
+  }
+
+  .privacy-intro {
+    padding: 1rem 0.85rem;
+    margin-top: 1.25rem;
+  }
+
+  .privacy-layout {
+    margin-top: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .privacy-toc {
+    padding: 1rem 0.85rem;
+  }
+
+  .privacy-section {
+    padding: 1.25rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .privacy-section-title {
+    font-size: 1.1rem;
+  }
+
+  .privacy-section-body p,
+  .privacy-section-body ul {
+    font-size: 0.9rem;
+  }
+
+  .privacy-contact-strip {
+    margin-top: 1.5rem;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .privacy-contact-strip h2 {
+    font-size: 1.2rem;
+  }
+
+  .privacy-contact-strip p {
+    font-size: 0.9rem;
+  }
+}

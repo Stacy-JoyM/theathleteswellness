@@ -1,13 +1,18 @@
+import { useLayoutEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { INSURANCE_PACKAGES, LIAISON_FAMILY_OFFICE } from '../../constants'
-import { getAssetUrl } from '../../utils/assets'
+import { ABOUT_PAGE, INSURANCE_PACKAGES, LIAISON_FAMILY_OFFICE, LEARN_WELLNESS_DEALS_PATH } from '../../constants'
+import { getPackageCardImageUrl } from '../../utils/packageCardImages'
 import PageHero from '../../components/shared/PageHero'
 import InsuranceCard from '../../components/shared/InsuranceCard'
 import CtaSection from '../../components/shared/CtaSection'
 import './ProductPage.css'
 
 export default function ProductPage() {
-  const productImage = getAssetUrl('all_sports.jpeg')
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+  }, [])
 
   return (
     <section className="product-page">
@@ -20,16 +25,21 @@ export default function ProductPage() {
 
       <section className="insurance-cards-section">
         <div className="insurance-cards">
-          {INSURANCE_PACKAGES.map((plan) => (
-            <InsuranceCard
-              key={plan.id}
-              plan={plan}
-              imageUrl={productImage}
-              ctaText="Apply Now"
-              ctaHref="/apply-now"
-              ctaState={{ planId: plan.id }}
-            />
-          ))}
+          {INSURANCE_PACKAGES.map((plan) => {
+            const wellnessStory = ABOUT_PAGE.packages.find((p) => p.id === plan.id)
+            return (
+              <InsuranceCard
+                key={plan.id}
+                plan={plan}
+                imageUrl={getPackageCardImageUrl(plan.id)}
+                wellnessStory={wellnessStory}
+                packageBreakdownTo={LEARN_WELLNESS_DEALS_PATH}
+                ctaText="Join the Club"
+                ctaHref="/apply-now"
+                ctaState={{ planId: plan.id }}
+              />
+            )
+          })}
         </div>
       </section>
 
@@ -53,7 +63,7 @@ export default function ProductPage() {
         <p className="product-liaison-disclaimer">{LIAISON_FAMILY_OFFICE.disclaimer}</p>
         <div className="product-liaison-actions">
           <Link to="/contact-us" className="product-liaison-advisor">
-            Talk to Advisor
+            Talk to Our Team
           </Link>
         </div>
       </section>
@@ -79,7 +89,7 @@ export default function ProductPage() {
       <CtaSection
         title="Need Help Choosing a Package?"
         description="Speak with our team for guidance tailored to your sporting and wellness needs."
-        secondaryLink={{ label: 'Talk to an Advisor', href: '/contact-us' }}
+        secondaryLink={{ label: 'Talk to Our Team', href: '/contact-us' }}
         className="insurance-final-cta"
       />
     </section>

@@ -149,3 +149,38 @@
     padding: 1rem;
   }
 }
+
+@media (max-width: 480px) {
+  .contact-page {
+    margin: 0.4rem 0 0.85rem;
+  }
+
+  .contact-hero {
+    height: 120px;
+  }
+
+  .contact-title {
+    font-size: 1.35rem;
+  }
+
+  .contact-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .contact-columns {
+    padding: 0.85rem 0.75rem;
+    gap: 1rem;
+  }
+
+  .contact-column {
+    min-height: auto;
+  }
+
+  .contact-brand-logo {
+    height: 32px;
+  }
+
+  .contact-row {
+    font-size: 0.95rem;
+  }
+}

@@ -7,6 +7,57 @@
   margin-bottom: 0;
 }
 
+.insurance-deals-framework {
+  margin-top: 1.75rem;
+  padding: 1.5rem 1.25rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.insurance-deals-framework-title {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.insurance-deals-framework-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .insurance-deals-framework-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.insurance-deals-framework-card {
+  margin: 0;
+  padding: 1rem 1rem 1.1rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
+}
+
+.insurance-deals-framework-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e40af;
+  line-height: 1.35;
+}
+
+.insurance-deals-framework-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
 .insurance-deals-grid-section,
 .insurance-deals-liaison-row,
 .insurance-compare-section,
@@ -324,5 +375,53 @@
   .insurance-compare-table th,
   .insurance-compare-table td {
     padding: 0.6rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .insurance-deals-page {
+    width: min(var(--max-content-width, 1120px), 100% - 1rem);
+    margin: 1rem auto 0;
+    padding: 0 0.5rem;
+  }
+
+  .insurance-deals-liaison-row {
+    padding: 1.25rem 1rem;
+  }
+
+  .insurance-deals-liaison-title {
+    font-size: 1.2rem;
+  }
+
+  .insurance-deals-liaison-actions {
+    flex-direction: column;
+  }
+
+  .insurance-deals-liaison-apply,
+  .insurance-deals-liaison-advisor {
+    width: 100%;
+    text-align: center;
+  }
+
+  .insurance-compare-section {
+    padding: 1rem 0.75rem;
+  }
+
+  .insurance-compare-section h2 {
+    font-size: 1.15rem;
+  }
+
+  .insurance-compare-intro {
+    font-size: 0.9rem;
+  }
+
+  .insurance-compare-apply-btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.65rem 1.25rem;
+  }
+
+  .insurance-deals-grid-section h2 {
+    font-size: 1.2rem;
   }
 }

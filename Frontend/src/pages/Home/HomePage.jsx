@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { PARTNERS, ABOUT_PAGE } from '../../constants'
+import { LEARN_WELLNESS_DEALS_PATH, PARTNERS, ABOUT_PAGE, LIAISON_FAMILY_OFFICE } from '../../constants'
 import { getAssetUrl } from '../../utils/assets'
+import { getPackageCardImageUrl } from '../../utils/packageCardImages'
 import './HomePage.css'
 
 const WELLNESS_TABS = [
-  { id: 'suswa', name: 'Suswa', color: '#1e40af' },
-  { id: 'longonot', name: 'Longonot', color: '#0d9488' },
-  { id: 'elgon', name: 'Elgon', color: '#7c3aed' },
-  { id: 'kenya', name: 'Kenya', color: '#16a34a' },
-  { id: 'liaison', name: 'Family Office', color: '#374151' },
+  { id: 'suswa', name: 'Suswa', color: '#0d9488' },
+  { id: 'longonot', name: 'Longonot', color: '#1e40af' },
+  { id: 'elgon', name: 'Elgon', color: '#166534' },
+  { id: 'kenya', name: 'Kenya', color: '#E9362C' },
+  { id: 'liaison', name: 'Build your wealth', color: '#0ea5e9' },
 ]
 
 const WellnessNavIcon = ({ id }) => (
@@ -49,32 +50,36 @@ const WellnessNavIcon = ({ id }) => (
 )
 
 const homeHighlights = [
-  { title: 'Tiered protection that grows with you' },
-  { title: 'Affordable and comprehensive healthcare benefits' },
-  { title: 'Guaranteed annual cash back rewards' },
-  { title: 'Access to elite family office and investment advisory service' },
+  { title: 'Access essential health, recovery, and wellness support — all in one place.' },
+  { title: 'Same annual cashback programme on every tier—amount scales with your package.' },
+  { title: 'Start where you are and level up as your training and performance evolve.' },
+  { title: 'Access premium wealth support to grow, manage, and protect what you earn.' },
 ]
 
 const homeSteps = [
   {
     step: '01',
     title: 'Review Plan Options',
-    description: 'Compare available covers and select the package aligned to your needs.',
+    description: 'Choose your level. Explore your options and pick the plan that fits your game, your lifestyle and your goals.',
   },
   {
     step: '02',
     title: 'Complete Enrollment',
-    description: 'Submit your details and finalize enrollment with guided support.',
+    description: 'Join the club. Share your details and get set up quickly with guided support every step of the way.',
   },
   {
     step: '03',
     title: 'Activate Your Benefits',
-    description: 'Start accessing care pathways, partner services, and member resources.',
+    description: 'Start your journey. Access your wellness support, recovery services, and exclusive member benefits right away.',
   },
 ]
 
 function HomePage() {
-  const heroBackgrounds = [getAssetUrl('kenyan_sport_win.png'), getAssetUrl('kenya_sport_win2.jpg')]
+  const heroBackgrounds = [
+    getAssetUrl('tawc_elgon.jpg'),
+    getAssetUrl('tawc_kenya.jpg'),
+    getAssetUrl('tawc_longonot.jpg'),
+  ]
   const [activeHeroIndex, setActiveHeroIndex] = useState(0)
   const [activeWellnessTab, setActiveWellnessTab] = useState('suswa')
 
@@ -102,16 +107,16 @@ function HomePage() {
         </div>
         <div className="home-hero-overlay">
           <p className="home-kicker">Your Safety Net For Every Season</p>
-          <h1 className="home-title">Wellness Club Built for Athletes</h1>
+          <h1 className="home-title">Wellness Club for athletes, built by athletes.</h1>
           <p className="home-subtitle">
-            Trusted health and financial wellness club to ensure athlete overall well-being.
+            From performance to recovery to life after sport, everything you need in one place.
           </p>
           <div className="home-cta-group">
             <Link className="home-cta" to="/product">
-              Get Started Today
+              Join the Club
             </Link>
             <Link className="home-cta home-cta-secondary" to="/insurance-deals">
-              Learn More on Wellness
+              Explore your wellness journey
             </Link>
           </div>
         </div>
@@ -151,17 +156,54 @@ function HomePage() {
               <div className="home-wellness-content">
                 <div
                   key={activeWellnessTab}
-                  className="home-wellness-panel"
+                  className={`home-wellness-panel ${activeWellnessTab === 'liaison' ? 'home-wellness-panel--liaison' : ''}`}
                   style={{ '--panel-color': WELLNESS_TABS.find((t) => t.id === activeWellnessTab)?.color ?? '#1e40af' }}
                 >
-                  <p className="home-wellness-kicker">About {activePackage.name}</p>
-                  <p className="home-wellness-desc">{activePackage.description}</p>
+                  <p className="home-wellness-kicker">
+                    {activePackage.id === 'suswa'
+                      ? 'Suswa – Stay Strong'
+                      : activePackage.id === 'longonot'
+                        ? 'LONGONOT — Level Up'
+                        : activePackage.id === 'elgon'
+                          ? 'ELGON – Go Pro'
+                          : activePackage.id === 'kenya'
+                            ? 'KENYA — Elite'
+                            : activePackage.id === 'liaison'
+                              ? 'BUILD YOUR WEALTH'
+                              : `About ${activePackage.name}`}
+                  </p>
+                  {activeWellnessTab === 'liaison' ? (
+                    <div className="home-wellness-liaison">
+                      <p className="home-wellness-liaison-intro">{LIAISON_FAMILY_OFFICE.clientIntro}</p>
+                    </div>
+                  ) : (
+                    <div className="home-wellness-package-body">
+                      <p className="home-wellness-intro">{activePackage.intro}</p>
+                      <h3 className="home-wellness-subheading">Within play</h3>
+                      <p className="home-wellness-desc">
+                        {activePackage.withinPlay.beforeLink}
+                        {activePackage.withinPlay.showPackageBreakdownLink && (
+                          <Link className="home-wellness-inline-link" to={LEARN_WELLNESS_DEALS_PATH}>
+                            See package breakdown
+                          </Link>
+                        )}
+                        {activePackage.withinPlay.afterLink}
+                      </p>
+                      <h3 className="home-wellness-subheading">Post play</h3>
+                      <p className="home-wellness-desc home-wellness-desc--tail">{activePackage.postPlay}</p>
+                    </div>
+                  )}
                   <Link className="home-wellness-learn-more" to="/insurance-deals">
                     Learn More
                   </Link>
                 </div>
-                <div className="home-wellness-image">
-                  <img src={heroBackgrounds[0]} alt="Athlete wellness" />
+                <div
+                  className={`home-wellness-image${activeWellnessTab === 'suswa' ? ' home-wellness-image--suswa' : ''}`}
+                >
+                  <img
+                    src={getPackageCardImageUrl(activeWellnessTab)}
+                    alt="Athlete wellness"
+                  />
                 </div>
               </div>
             </div>
@@ -178,7 +220,7 @@ function HomePage() {
       <section className="home-process-section">
         <h2>How It Works</h2>
         <p className="home-section-intro">
-          A simple three-step process designed for speed, clarity, and confidence.
+          Three simple steps to get you set up and ready.
         </p>
         <div className="home-process-grid">
           {homeSteps.map((step) => (
@@ -202,14 +244,14 @@ function HomePage() {
       </section>
 
       <section className="home-final-cta-section">
-        <h2>Ready to Secure Your Cover?</h2>
-        <p>Compare packages and get personalized guidance from our support team.</p>
+        <h2>Do you want to embrace Wellness? Join the Club</h2>
+        <p>Explore your options and get guidance from our team to find what works for you.</p>
         <div className="home-cta-group">
           <Link className="home-cta" to="/apply-now">
-            Apply Now
+            Join the Club
           </Link>
           <Link className="home-cta home-cta-secondary" to="/contact-us">
-            Speak to an Advisor
+            Speak to Our Team
           </Link>
         </div>
       </section>

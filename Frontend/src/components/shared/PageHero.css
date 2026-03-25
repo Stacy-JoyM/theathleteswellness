@@ -39,3 +39,23 @@
     font-size: 1.35rem;
   }
 }
+
+@media (max-width: 480px) {
+  .page-hero {
+    padding: 1.25rem 0.85rem;
+    margin: 0 0.5rem;
+    width: calc(100% - 1rem);
+  }
+
+  .page-hero-kicker {
+    font-size: 0.72rem;
+  }
+
+  .page-hero h1 {
+    font-size: 1.2rem;
+  }
+
+  .page-hero p {
+    font-size: 0.9rem;
+  }
+}

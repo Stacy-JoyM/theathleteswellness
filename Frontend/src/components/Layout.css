@@ -343,7 +343,7 @@
     top: 0;
     right: 0;
     bottom: 0;
-    width: min(320px, 85vw);
+    width: min(320px, 92vw);
     z-index: 999;
     background: #ffffff;
     padding: 5rem 1.5rem 2rem;
@@ -462,5 +462,43 @@
   .apply-now-button {
     font-size: 0.8rem;
     padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.4rem 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .header-aob {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.65rem;
+  }
+
+  .aob-inner {
+    gap: 0.5rem 0.75rem;
+  }
+
+  .brand-logo {
+    height: 32px;
+  }
+
+  .header-mobile-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header-mobile-toggle-bar {
+    width: 18px;
+  }
+
+  .apply-now-button {
+    font-size: 0.75rem;
+    padding: 0.45rem 0.85rem;
+  }
+
+  .main {
+    padding: 0 0 1.5rem;
   }
 }

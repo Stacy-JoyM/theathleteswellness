@@ -1,0 +1,15 @@
+# Netlify: static deploy for the React (Vite) frontend only.
+# Repo root — does not modify or replace any Fly.io / Server deployment setup.
+
+[build]
+  command = "cd Frontend && npm ci && npm run build"
+  publish = "Frontend/dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Client-side routes (React Router)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

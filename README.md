@@ -39,7 +39,7 @@ Project guidelines and technical overview for the TAWC website.
   - Contact info & social links
   - Partner info & navigation links
   - Insurance packages (Suswa, Longonot, Elgon, Kenya)
-  - Liaison Family Office & comparison tables
+  - Wealth Management Services & comparison tables
 - **No API:** All data is static and imported from constants.
 
 ### Assets & Styling

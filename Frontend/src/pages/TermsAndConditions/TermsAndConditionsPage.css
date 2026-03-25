@@ -223,3 +223,46 @@
     gap: 0.5rem;
   }
 }
+
+@media (max-width: 480px) {
+  .terms-page {
+    width: min(1120px, 100% - 1rem);
+    margin: 1rem auto 1.5rem;
+  }
+
+  .terms-hero {
+    padding: 1.25rem 1rem;
+  }
+
+  .terms-hero h1 {
+    font-size: 1.35rem;
+  }
+
+  .terms-intro {
+    padding: 1rem 0.85rem;
+    margin-top: 1.25rem;
+  }
+
+  .terms-layout {
+    margin-top: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .terms-toc {
+    padding: 1rem 0.85rem;
+  }
+
+  .terms-section {
+    padding: 1.25rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .terms-section h2 {
+    font-size: 1.1rem;
+  }
+
+  .terms-section p,
+  .terms-section ul {
+    font-size: 0.9rem;
+  }
+}

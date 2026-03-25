@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
-import { INSURANCE_DEAL_CARDS, COMPARISON_ROWS, LIAISON_FAMILY_OFFICE } from '../../constants'
+import { COMPARISON_ROWS, LIAISON_FAMILY_OFFICE, INSURANCE_DEALS_WELLNESS_OVERVIEW } from '../../constants'
 import PageHero from '../../components/shared/PageHero'
-import InsuranceDealCard from '../../components/shared/InsuranceDealCard'
 import CtaSection from '../../components/shared/CtaSection'
 import './InsuranceDealsPage.css'
 
@@ -27,40 +26,19 @@ export default function InsuranceDealsPage() {
         className="insurance-deals-hero"
       />
 
-      <section className="insurance-deals-grid-section">
-        <h2>Available Deals</h2>
-        <div className="insurance-deals-grid">
-          {INSURANCE_DEAL_CARDS.map((deal) => (
-            <InsuranceDealCard key={deal.title} deal={deal} />
+      <section className="insurance-deals-framework" aria-label="How wellness packages work">
+        <h2 className="insurance-deals-framework-title">How our packages work</h2>
+        <div className="insurance-deals-framework-grid">
+          {INSURANCE_DEALS_WELLNESS_OVERVIEW.map((block) => (
+            <article key={block.title} className="insurance-deals-framework-card">
+              <h3>{block.title}</h3>
+              <p>{block.body}</p>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="insurance-deals-liaison-row">
-        <h2 className="insurance-deals-liaison-title">{LIAISON_FAMILY_OFFICE.title}</h2>
-        <p className="insurance-deals-liaison-intro">{LIAISON_FAMILY_OFFICE.clientIntro}</p>
-        <div className="insurance-deals-liaison-content">
-          {LIAISON_FAMILY_OFFICE.services.map((service) => (
-            <div key={service.name} className="insurance-deals-liaison-service">
-              <h3>{service.name}</h3>
-              <p>{service.description}</p>
-              <ul>
-                {service.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <p className="insurance-deals-liaison-disclaimer">{LIAISON_FAMILY_OFFICE.disclaimer}</p>
-        <div className="insurance-deals-liaison-actions">
-          <Link to="/contact-us" className="insurance-deals-liaison-advisor">
-            Talk to Advisor
-          </Link>
-        </div>
-      </section>
-
-      <section className="insurance-compare-section">
+      <section className="insurance-compare-section" id="compare-packages">
         <h2>Compare Packages at a Glance</h2>
         <p className="insurance-compare-intro">See how our wellness packages stack up. All amounts in KES.</p>
         <div className="insurance-compare-table-wrap">
@@ -91,7 +69,31 @@ export default function InsuranceDealsPage() {
           </table>
         </div>
         <div className="insurance-compare-cta">
-          <Link to="/apply-now" className="insurance-compare-apply-btn">Apply Now</Link>
+          <Link to="/apply-now" className="insurance-compare-apply-btn">Join the Club</Link>
+        </div>
+      </section>
+
+      <section className="insurance-deals-liaison-row">
+        <h2 className="insurance-deals-liaison-title">{LIAISON_FAMILY_OFFICE.title}</h2>
+        <p className="insurance-deals-liaison-intro">{LIAISON_FAMILY_OFFICE.clientIntro}</p>
+        <div className="insurance-deals-liaison-content">
+          {LIAISON_FAMILY_OFFICE.services.map((service) => (
+            <div key={service.name} className="insurance-deals-liaison-service">
+              <h3>{service.name}</h3>
+              <p>{service.description}</p>
+              <ul>
+                {service.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p className="insurance-deals-liaison-disclaimer">{LIAISON_FAMILY_OFFICE.disclaimer}</p>
+        <div className="insurance-deals-liaison-actions">
+          <Link to="/contact-us" className="insurance-deals-liaison-advisor">
+            Talk to Our Team
+          </Link>
         </div>
       </section>
 

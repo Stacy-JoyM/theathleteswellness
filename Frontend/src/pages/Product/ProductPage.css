@@ -32,7 +32,7 @@
   margin: 0 0 0.6rem;
   font-size: 1.4rem;
   font-weight: 700;
-  color: #0284c7;
+  color: var(--color-navy);
 }
 
 .product-liaison-intro {
@@ -193,5 +193,35 @@
 @media (max-width: 500px) {
   .product-page {
     padding: 0 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-page {
+    width: min(var(--max-content-width, 1120px), 100% - 1rem);
+    margin: 1rem auto 0;
+    padding: 0 0.5rem;
+  }
+
+  .product-liaison-section {
+    padding: 1.25rem 0.9rem;
+  }
+
+  .product-liaison-title {
+    font-size: 1.2rem;
+  }
+
+  .product-liaison-actions {
+    flex-direction: column;
+  }
+
+  .product-liaison-apply,
+  .product-liaison-advisor {
+    width: 100%;
+    text-align: center;
+  }
+
+  .insurance-process-section h2 {
+    font-size: 1.15rem;
   }
 }

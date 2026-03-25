@@ -1,6 +1,6 @@
 {
-  "productType": "msa",
-  "orderNumber": "1",
+  "productType": "Suswa",
+  "orderNumber": "",
   "joiningDate": "2025-03-16",
   "policyDuration": "12",
   "personalAccidentAmount": 100000,
@@ -13,6 +13,8 @@
   "annualCashBack": 12000,
   "sportingEquipment": 50000,
   "premiumAmount": 37100,
+  "instalments": "no",
+  "instalmentsPercFee": 0,
   "mpesaNumber": "254722321623",
   "principal": [
     {

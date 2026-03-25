@@ -45,7 +45,6 @@ export default function WhoAreWePage() {
       </div>
 
       <div className="who-are-we-bridge">
-        <div className="who-are-we-bridge-line" aria-hidden="true" />
         <span className="who-are-we-bridge-icon" aria-hidden>+</span>
       </div>
 
@@ -65,7 +64,7 @@ export default function WhoAreWePage() {
       <section className="who-are-we-cta">
         <p>Ready to join the club?</p>
         <Link to="/apply-now" className="who-are-we-cta-button">
-          Apply Now
+          Join the Club
         </Link>
       </section>
     </section>

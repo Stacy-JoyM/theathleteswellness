@@ -210,3 +210,45 @@
     flex-direction: column;
   }
 }
+
+@media (max-width: 480px) {
+  .site-footer {
+    padding: 1.5rem 1rem 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .site-footer-top {
+    gap: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .site-footer-logo {
+    height: 40px;
+  }
+
+  .site-footer-brand-text h3 {
+    font-size: 1rem;
+  }
+
+  .site-footer-brand-text p {
+    font-size: 0.82rem;
+  }
+
+  .site-footer-contact-item {
+    font-size: 0.85rem;
+  }
+
+  .site-footer-nav {
+    gap: 0.85rem;
+    padding: 0.85rem 0;
+  }
+
+  .site-footer-nav a {
+    font-size: 0.85rem;
+  }
+
+  .site-footer-copyright {
+    font-size: 0.75rem;
+    padding-top: 0.85rem;
+  }
+}

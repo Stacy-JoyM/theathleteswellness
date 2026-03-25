@@ -155,13 +155,6 @@
   padding: 0 1.5rem;
 }
 
-.who-are-we-bridge-line {
-  flex: 1;
-  max-width: 200px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
-}
-
 .who-are-we-bridge-icon {
   display: flex;
   align-items: center;
@@ -295,5 +288,84 @@
   .who-are-we-cta {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .who-are-we-hero {
+    padding: 1.75rem 0.6rem 2rem;
+  }
+
+  .who-are-we-hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .who-are-we-intro {
+    font-size: 0.95rem;
+  }
+
+  .who-are-we-partners {
+    margin-top: -1.25rem;
+    padding: 0 0.75rem;
+    gap: 1.25rem;
+  }
+
+  .who-are-we-partner-card {
+    padding: 1.1rem 0.9rem;
+  }
+
+  .who-are-we-partner-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .who-are-we-partner-card h2 {
+    font-size: 1.15rem;
+  }
+
+  .who-are-we-partner-desc {
+    font-size: 0.9rem;
+  }
+
+  .who-are-we-partner-highlights li {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .who-are-we-bridge {
+    padding: 0 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .who-are-we-partnership {
+    margin-top: 2rem;
+    padding: 0 0.75rem 2rem;
+  }
+
+  .who-are-we-partnership h2 {
+    font-size: 1.3rem;
+  }
+
+  .who-are-we-partnership-desc {
+    font-size: 0.95rem;
+  }
+
+  .who-are-we-benefits li {
+    font-size: 0.9rem;
+  }
+
+  .who-are-we-cta {
+    padding: 1.75rem 0.75rem;
+  }
+
+  .who-are-we-cta p {
+    font-size: 1rem;
+  }
+
+  .who-are-we-cta-button {
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
   }
 }

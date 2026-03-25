@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
 import ApplyNowPage from './pages/ApplyNow/ApplyNowPage.jsx'
+import ApplySuccessPage from './pages/ApplyNow/ApplySuccessPage.jsx'
 import ContactUsPage from './pages/ContactUs/ContactUsPage.jsx'
 import HomePage from './pages/Home/HomePage.jsx'
 import FaqPage from './pages/FAQ/FaqPage.jsx'
@@ -16,6 +17,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/apply-now" element={<ApplyNowPage />} />
+        <Route path="/apply-now/success" element={<ApplySuccessPage />} />
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/insurance-deals" element={<InsuranceDealsPage />} />
         <Route path="/product" element={<ProductPage />} />

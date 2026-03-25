@@ -30,10 +30,6 @@
   flex: 1;
 }
 
-.insurance-card-body .insurance-card-features {
-  flex-grow: 1;
-}
-
 .insurance-card-tagline,
 .insurance-card-price {
   margin: 0 0 0.4rem;
@@ -47,21 +43,55 @@
   color: #1e293b;
 }
 
-.insurance-card-features {
-  margin: 0 0 1rem;
-  padding-left: 1.2rem;
-  color: #475569;
-  font-size: 0.9rem;
-  line-height: 1.6;
+.insurance-card-intro {
+  margin: 0 0 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: #334155;
 }
 
-.insurance-card-features li {
-  margin-bottom: 0.3rem;
+.insurance-card-subheading {
+  margin: 0.85rem 0 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: #64748b;
+}
+
+.insurance-card-subheading:first-of-type {
+  margin-top: 0.35rem;
+}
+
+.insurance-card-story {
+  margin: 0 0 0.65rem;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.insurance-card-story--tail {
+  margin-bottom: 0.85rem;
+}
+
+.insurance-card-inline-link {
+  color: #0284c7;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.insurance-card-inline-link:hover {
+  color: #0369a1;
 }
 
 .insurance-card-cta {
   display: block;
   width: 100%;
+  margin-top: auto;
   text-align: center;
   background: linear-gradient(135deg, #0ea5e9, #0284c7);
   color: #ffffff;
@@ -80,4 +110,34 @@
 .insurance-card-cta:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+@media (max-width: 480px) {
+  .insurance-card img {
+    height: 140px;
+  }
+
+  .insurance-card-body {
+    padding: 1rem;
+  }
+
+  .insurance-card h2 {
+    font-size: 1.05rem;
+  }
+
+  .insurance-card-tagline,
+  .insurance-card-price,
+  .insurance-card-intro,
+  .insurance-card-story {
+    font-size: 0.85rem;
+  }
+
+  .insurance-card-subheading {
+    font-size: 0.62rem;
+  }
+
+  .insurance-card-cta {
+    font-size: 0.85rem;
+    padding: 0.55rem 0.9rem;
+  }
 }

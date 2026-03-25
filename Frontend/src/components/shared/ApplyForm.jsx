@@ -1,5 +1,6 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useMemo } from 'react'
 import { FORM_PACKAGE_OPTIONS, INSURANCE_PACKAGES, LIAISON_PENSION, SITE_NAME } from '../../constants'
+import { computeInstallmentSchedule, formatKes } from '../../utils/paymentSchedule'
 import './ApplyForm.css'
 
 const initialDependant = () => ({
@@ -29,8 +30,8 @@ const initialFormData = {
   spouseDob: '',
   dependants: [initialDependant()],
   lastExpenseCover: [
-    { parentName: '', idNumber: '', dob: '', gender: '' },
-    { parentName: '', idNumber: '', dob: '', gender: '' },
+    { relationship: 'parent', parentName: '', idNumber: '', dob: '', gender: '' },
+    { relationship: 'parent', parentName: '', idNumber: '', dob: '', gender: '' },
   ],
   sportsEquipment: [initialEquipmentItem()],
   principalPhone: '',
@@ -43,24 +44,40 @@ const initialFormData = {
 
 export { initialFormData }
 
-function formatKes(n) {
-  return new Intl.NumberFormat('en-KE', { style: 'decimal' }).format(n)
+const PHONE_PREFIX = '254'
+
+function normalizePhoneInput(val) {
+  const digits = String(val || '').replace(/\D/g, '')
+  if (digits.startsWith('254') && digits.length >= 12) return digits.slice(0, 12)
+  if (digits.startsWith('254')) return PHONE_PREFIX + digits.slice(3, 12)
+  if (digits.startsWith('07') && digits.length >= 10) return PHONE_PREFIX + digits.slice(2, 11)
+  if (digits.startsWith('7') && digits.length === 9) return PHONE_PREFIX + digits
+  if (digits.length > 0) return PHONE_PREFIX + digits.slice(0, 9)
+  return ''
 }
 
 export default function ApplyForm({ selectedPlan, formData, onFormChange, onSubmit, scrollIntoView, onScrolled, isSubmitting }) {
   const formRef = useRef(null)
   const selectedPackage = INSURANCE_PACKAGES.find((p) => p.id === formData.selectedPlanId)
-  const totalPrice = selectedPackage?.annualSubscription ?? null
-  const isInstallments = (formData.paymentMethod || 'full') === 'installments'
 
-  const installmentBreakdown = totalPrice
-    ? (() => {
-        const month1 = Math.round(totalPrice * 0.5)
-        const month2 = Math.round(totalPrice * 0.25)
-        const month3 = totalPrice - month1 - month2
-        return { month1, month2, month3 }
-      })()
-    : null
+  const handlePhoneChange = (name, rawValue) => {
+    const normalized = normalizePhoneInput(rawValue)
+    onFormChange({ target: { name, value: normalized } })
+  }
+
+  const handlePhonePaste = (e, name) => {
+    e.preventDefault()
+    const pasted = (e.clipboardData?.getData('text') || '').replace(/\D/g, '')
+    let digits = ''
+    if (pasted.startsWith('254') && pasted.length >= 12) digits = pasted.slice(3, 12)
+    else if (pasted.startsWith('254')) digits = pasted.slice(3)
+    else if (pasted.startsWith('07') && pasted.length >= 10) digits = pasted.slice(2, 11)
+    else if (pasted.startsWith('7') && pasted.length === 9) digits = pasted
+    else if (pasted.length >= 9) digits = pasted.slice(0, 9)
+    else digits = pasted
+    const full = PHONE_PREFIX + digits.slice(0, 9)
+    onFormChange({ target: { name, value: full } })
+  }
 
   useEffect(() => {
     if (scrollIntoView && formRef.current) {
@@ -68,6 +85,18 @@ export default function ApplyForm({ selectedPlan, formData, onFormChange, onSubm
       onScrolled?.()
     }
   }, [scrollIntoView])
+
+  useEffect(() => {
+    if (selectedPackage?.annualSubscription == null && formData.paymentMethod === 'installments') {
+      onFormChange({ target: { name: 'paymentMethod', value: 'full' } })
+    }
+  }, [selectedPackage?.annualSubscription, formData.paymentMethod, onFormChange])
+
+  const installmentSchedule = useMemo(() => {
+    const sub = selectedPackage?.annualSubscription
+    if (sub == null || formData.paymentMethod !== 'installments') return null
+    return computeInstallmentSchedule(sub)
+  }, [selectedPackage, formData.paymentMethod])
 
   return (
     <section className="apply-form" ref={formRef}>
@@ -171,13 +200,14 @@ export default function ApplyForm({ selectedPlan, formData, onFormChange, onSubm
             </div>
             <div className="apply-form-grid">
               <div className="apply-form-row">
-                <label htmlFor="apply-kraPin">KRA PIN Number</label>
+                <label htmlFor="apply-kraPin">KRA PIN Number <span className="required">*</span></label>
                 <input
                   type="text"
                   id="apply-kraPin"
                   name="kraPin"
                   value={formData.kraPin}
                   onChange={onFormChange}
+                  required
                   placeholder="e.g. A001234567X"
                 />
               </div>
@@ -185,15 +215,22 @@ export default function ApplyForm({ selectedPlan, formData, onFormChange, onSubm
                 <label htmlFor="apply-principalPhone">
                   Contact Phone Number <span className="required">*</span>
                 </label>
-                <input
-                  type="tel"
-                  id="apply-principalPhone"
-                  name="principalPhone"
-                  value={formData.principalPhone}
-                  onChange={onFormChange}
-                  required
-                  placeholder="+254 700 000 000"
-                />
+                <div className="apply-form-phone-input">
+                  <span className="apply-form-phone-prefix">254</span>
+                  <input
+                    type="tel"
+                    id="apply-principalPhone"
+                    name="principalPhone"
+                    value={(normalizePhoneInput(formData.principalPhone) || '').replace(/^254/, '')}
+                    onChange={(e) => handlePhoneChange('principalPhone', '254' + e.target.value.replace(/\D/g, '').slice(0, 9))}
+                    onPaste={(e) => handlePhonePaste(e, 'principalPhone')}
+                    required
+                    placeholder="712345678"
+                    maxLength={9}
+                    pattern="[0-9]{9}"
+                    title="Enter 9 digits (e.g. 712345678)"
+                  />
+                </div>
               </div>
             </div>
             <div className="apply-form-row">
@@ -344,20 +381,37 @@ export default function ApplyForm({ selectedPlan, formData, onFormChange, onSubm
 
           <section className="apply-form-block">
             <h3 className="apply-form-block-title"><span className="apply-form-block-num">4</span> Last Expense Cover</h3>
-            <p className="apply-form-hint">Provide details for up to two parents.</p>
+            <p className="apply-form-hint">Provide details for up to two parents or parents-in-law.</p>
             {(formData.lastExpenseCover || [
-              { parentName: '', idNumber: '', dob: '', gender: '' },
-              { parentName: '', idNumber: '', dob: '', gender: '' },
-            ]).map((parent, index) => (
+              { relationship: 'parent', parentName: '', idNumber: '', dob: '', gender: '' },
+              { relationship: 'parent', parentName: '', idNumber: '', dob: '', gender: '' },
+            ]).map((entry, index) => (
               <div key={index} className="apply-form-last-expense-card">
-                <p className="apply-form-last-expense-title">Parent {index + 1}</p>
+                <div className="apply-form-row apply-form-last-expense-relationship">
+                  <label htmlFor={`apply-lastExpense-${index}-relationship`}>Relationship</label>
+                  <select
+                    id={`apply-lastExpense-${index}-relationship`}
+                    value={entry.relationship ?? 'parent'}
+                    onChange={(e) => {
+                      const updated = [...(formData.lastExpenseCover || [])]
+                      updated[index] = { ...updated[index], relationship: e.target.value }
+                      onFormChange({ target: { name: 'lastExpenseCover', value: updated } })
+                    }}
+                  >
+                    <option value="parent">Parent</option>
+                    <option value="parent-in-law">Parent-in-law</option>
+                  </select>
+                </div>
+                <p className="apply-form-last-expense-title">
+                  {entry.relationship === 'parent-in-law' ? 'Parent-in-law' : 'Parent'} {index + 1}
+                </p>
                 <div className="apply-form-grid">
                   <div className="apply-form-row">
-                    <label htmlFor={`apply-lastExpense-${index}-parentName`}>Parent Name</label>
+                    <label htmlFor={`apply-lastExpense-${index}-parentName`}>Name</label>
                     <input
                       type="text"
                       id={`apply-lastExpense-${index}-parentName`}
-                      value={parent.parentName}
+                      value={entry.parentName}
                       onChange={(e) => {
                         const updated = [...(formData.lastExpenseCover || [])]
                         updated[index] = { ...updated[index], parentName: e.target.value }
@@ -371,7 +425,7 @@ export default function ApplyForm({ selectedPlan, formData, onFormChange, onSubm
                     <input
                       type="text"
                       id={`apply-lastExpense-${index}-idNumber`}
-                      value={parent.idNumber}
+                      value={entry.idNumber}
                       onChange={(e) => {
                         const updated = [...(formData.lastExpenseCover || [])]
                         updated[index] = { ...updated[index], idNumber: e.target.value }
@@ -384,7 +438,7 @@ export default function ApplyForm({ selectedPlan, formData, onFormChange, onSubm
                     <label htmlFor={`apply-lastExpense-${index}-gender`}>Gender</label>
                     <select
                       id={`apply-lastExpense-${index}-gender`}
-                      value={parent.gender ?? ''}
+                      value={entry.gender ?? ''}
                       onChange={(e) => {
                         const updated = [...(formData.lastExpenseCover || [])]
                         updated[index] = { ...updated[index], gender: e.target.value }
@@ -402,7 +456,7 @@ export default function ApplyForm({ selectedPlan, formData, onFormChange, onSubm
                   <input
                     type="date"
                     id={`apply-lastExpense-${index}-dob`}
-                    value={parent.dob}
+                    value={entry.dob}
                     onChange={(e) => {
                       const updated = [...(formData.lastExpenseCover || [])]
                       updated[index] = { ...updated[index], dob: e.target.value }
@@ -572,75 +626,92 @@ export default function ApplyForm({ selectedPlan, formData, onFormChange, onSubm
 
           <section className="apply-form-block apply-form-payment">
             <h3 className="apply-form-block-title"><span className="apply-form-block-num">7</span> Payment</h3>
+            {selectedPackage?.annualSubscription != null && (
+              <>
+                <p className="apply-form-payment-label">How would you like to pay?</p>
+                <div className="apply-form-payment-options" role="radiogroup" aria-label="Payment method">
+                  <label
+                    className={`apply-form-payment-option ${formData.paymentMethod === 'full' ? 'is-selected' : ''}`}
+                  >
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="full"
+                      checked={formData.paymentMethod !== 'installments'}
+                      onChange={onFormChange}
+                    />
+                    <span className="apply-form-payment-option-title">Pay in full</span>
+                    <span className="apply-form-payment-option-desc">
+                      KES {formatKes(selectedPackage.annualSubscription)} — annual subscription, no surcharge
+                    </span>
+                  </label>
+                  <label
+                    className={`apply-form-payment-option ${formData.paymentMethod === 'installments' ? 'is-selected' : ''}`}
+                  >
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="installments"
+                      checked={formData.paymentMethod === 'installments'}
+                      onChange={onFormChange}
+                    />
+                    <span className="apply-form-payment-option-title">Pay in 3 installments</span>
+                    <span className="apply-form-payment-option-desc">
+                      Installment amounts are inclusive of a 5% premium charge, split 50% (month 1), 25% (month 2), 25% (month 3)
+                    </span>
+                  </label>
+                </div>
+                {installmentSchedule && (
+                  <div className="apply-form-installment-breakdown">
+                    <p className="apply-form-installment-title">Installment breakdown (KES)</p>
+                    <div className="apply-form-installment-grid">
+                      <div className="apply-form-installment-row">
+                        <span>Full-pay reference</span>
+                        <strong>{formatKes(installmentSchedule.basePremium)}</strong>
+                      </div>
+                      <div className="apply-form-installment-row">
+                        <span>Total payable (inclusive of 5% premium charge)</span>
+                        <strong>{formatKes(installmentSchedule.installmentTotal)}</strong>
+                      </div>
+                      <div className="apply-form-installment-row">
+                        <span>Month 1 (50%)</span>
+                        <strong>{formatKes(installmentSchedule.month1)}</strong>
+                      </div>
+                      <div className="apply-form-installment-row">
+                        <span>Month 2 (25%)</span>
+                        <strong>{formatKes(installmentSchedule.month2)}</strong>
+                      </div>
+                      <div className="apply-form-installment-row">
+                        <span>Month 3 (25%)</span>
+                        <strong>{formatKes(installmentSchedule.month3)}</strong>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
             <div className="apply-form-row">
               <label htmlFor="apply-paymentMpesaNumber">
                 M-Pesa Number <span className="required">*</span>
               </label>
-              <input
-                type="tel"
-                id="apply-paymentMpesaNumber"
-                name="paymentMpesaNumber"
-                value={formData.paymentMpesaNumber}
-                onChange={onFormChange}
-                required
-                placeholder="07XX XXX XXX"
-              />
+              <div className="apply-form-phone-input">
+                <span className="apply-form-phone-prefix">254</span>
+                <input
+                  type="tel"
+                  id="apply-paymentMpesaNumber"
+                  name="paymentMpesaNumber"
+                  value={(normalizePhoneInput(formData.paymentMpesaNumber) || '').replace(/^254/, '')}
+                  onChange={(e) => handlePhoneChange('paymentMpesaNumber', '254' + e.target.value.replace(/\D/g, '').slice(0, 9))}
+                  onPaste={(e) => handlePhonePaste(e, 'paymentMpesaNumber')}
+                  required
+                  placeholder="712345678"
+                  maxLength={9}
+                  pattern="[0-9]{9}"
+                  title="Enter 9 digits (e.g. 712345678)"
+                />
+              </div>
               <span className="apply-form-hint-inline">The number you would like to transfer payment from</span>
             </div>
-            <div className="apply-form-row">
-              <p className="apply-form-payment-label">Payment Option <span className="required">*</span></p>
-              <div className="apply-form-payment-options">
-                <label className={`apply-form-payment-option ${(formData.paymentMethod || 'full') === 'full' ? 'is-selected' : ''}`}>
-                  <input
-                    type="radio"
-                    name="paymentMethod"
-                    value="full"
-                    checked={(formData.paymentMethod || 'full') === 'full'}
-                    onChange={onFormChange}
-                  />
-                  <span className="apply-form-payment-option-title">Pay all at once</span>
-                  <span className="apply-form-payment-option-desc">Full payment in one transaction</span>
-                </label>
-                <label className={`apply-form-payment-option ${(formData.paymentMethod || 'full') === 'installments' ? 'is-selected' : ''}`}>
-                  <input
-                    type="radio"
-                    name="paymentMethod"
-                    value="installments"
-                    checked={(formData.paymentMethod || 'full') === 'installments'}
-                    onChange={onFormChange}
-                  />
-                  <span className="apply-form-payment-option-title">Pay in installments</span>
-                  <span className="apply-form-payment-option-desc">50% in month 1, 25% in month 2, 25% in month 3</span>
-                </label>
-              </div>
-            </div>
-            {isInstallments && (
-              <div className="apply-form-installment-breakdown">
-                <p className="apply-form-installment-title">Installment breakdown</p>
-                {installmentBreakdown ? (
-                  <div className="apply-form-installment-grid">
-                    <div className="apply-form-installment-row">
-                      <span>Total</span>
-                      <strong>KES {formatKes(totalPrice)}</strong>
-                    </div>
-                    <div className="apply-form-installment-row">
-                      <span>Month 1 (50%)</span>
-                      <strong>KES {formatKes(installmentBreakdown.month1)}</strong>
-                    </div>
-                    <div className="apply-form-installment-row">
-                      <span>Month 2 (25%)</span>
-                      <strong>KES {formatKes(installmentBreakdown.month2)}</strong>
-                    </div>
-                    <div className="apply-form-installment-row">
-                      <span>Month 3 (25%)</span>
-                      <strong>KES {formatKes(installmentBreakdown.month3)}</strong>
-                    </div>
-                  </div>
-                ) : (
-                  <p className="apply-form-installment-no-price">Select a wellness package above to see installment amounts. Liaison Family Office pricing is available on request.</p>
-                )}
-              </div>
-            )}
           </section>
 
           <section className="apply-form-block apply-form-declaration">

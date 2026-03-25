@@ -21,6 +21,13 @@
   --color-slate-100: #f1f5f9;
   --gradient-cta: linear-gradient(135deg, #0ea5e9, #0284c7);
   --max-content-width: 1120px;
+
+  /* Responsive breakpoints (for reference in media queries) */
+  --bp-sm: 480px;
+  --bp-md: 600px;
+  --bp-lg: 768px;
+  --bp-xl: 900px;
+  --bp-2xl: 1100px;
 }
 
 * {
@@ -29,8 +36,9 @@
 
 body {
   margin: 0;
-  min-width: 320px;
+  min-width: 280px;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 #root {

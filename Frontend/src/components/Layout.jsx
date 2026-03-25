@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import Footer from './Footer.jsx'
 import { CONTACT, NAV_LINKS, AOB_TAGLINE } from '../constants'
@@ -8,9 +8,11 @@ import './Layout.css'
 function ScrollToTop() {
   const location = useLocation()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-  }, [location.pathname])
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+  }, [location.pathname, location.key])
 
   return null
 }
@@ -121,7 +123,7 @@ function Layout() {
             to="/apply-now"
             className={({ isActive }) => `apply-now-button ${isActive ? 'active-link' : ''}`}
           >
-            Apply Now
+            Join the Club
           </NavLink>
         </div>
       </header>

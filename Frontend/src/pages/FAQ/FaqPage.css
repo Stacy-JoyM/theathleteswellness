@@ -81,6 +81,7 @@
   margin: 0;
   color: #475569;
   line-height: 1.55;
+  white-space: pre-line;
 }
 
 @media (max-width: 600px) {
@@ -95,5 +96,40 @@
   .faq-question {
     padding: 0.85rem 2.5rem 0.85rem 1rem;
     font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-page {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .faq-container {
+    width: 100%;
+  }
+
+  .faq-page h1 {
+    font-size: 1.3rem;
+  }
+
+  .faq-intro {
+    font-size: 0.9rem;
+  }
+
+  .faq-question {
+    padding: 0.75rem 2.25rem 0.75rem 0.85rem;
+    font-size: 0.9rem;
+  }
+
+  .faq-question::after {
+    right: 0.75rem;
+  }
+
+  .faq-answer-wrap {
+    padding: 0 0.85rem 0.85rem;
+  }
+
+  .faq-answer {
+    font-size: 0.9rem;
   }
 }

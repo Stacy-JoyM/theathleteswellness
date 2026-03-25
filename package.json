@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "cd Frontend && npm run build",
+    "dev": "npm run build && cd Server && node index.js",
+    "dev:watch": "npm run build && cd Server && nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

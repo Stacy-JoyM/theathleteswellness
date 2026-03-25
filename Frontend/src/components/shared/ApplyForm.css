@@ -260,6 +260,14 @@
   margin-top: 1rem;
 }
 
+.apply-form-last-expense-relationship {
+  margin-bottom: 0.75rem;
+}
+
+.apply-form-last-expense-relationship select {
+  max-width: 12rem;
+}
+
 .apply-form-last-expense-title {
   margin: 0 0 1rem;
   font-size: 0.9rem;
@@ -270,12 +278,15 @@
 /* Sports Equipment table */
 .apply-form-equipment {
   margin-top: 0.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .apply-form-equipment-header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 90px 120px 2rem;
   gap: 1rem;
+  min-width: 520px;
   padding: 0.5rem 0;
   font-size: 0.875rem;
   font-weight: 600;
@@ -287,6 +298,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 90px 120px 2rem;
   gap: 1rem;
+  min-width: 520px;
   align-items: center;
   padding: 0.75rem 0;
   border-bottom: 1px solid #f1f5f9;
@@ -433,6 +445,70 @@
   }
 }
 
+@media (max-width: 480px) {
+  .apply-form {
+    margin-top: 1.5rem;
+  }
+
+  .apply-form-header,
+  .apply-form-body {
+    padding: 1.25rem 1rem;
+  }
+
+  .apply-form-brand h1 {
+    font-size: 1.15rem;
+  }
+
+  .apply-form-doc-type {
+    font-size: 0.85rem;
+  }
+
+  .apply-form-block {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .apply-form-block-title {
+    font-size: 0.95rem;
+  }
+
+  .apply-form-equipment-header,
+  .apply-form-equipment-row {
+    grid-template-columns: 1fr 1fr 1fr 55px 75px 2rem;
+    gap: 0.4rem;
+  }
+
+  .apply-form-equipment-header {
+    font-size: 0.8rem;
+  }
+
+  .apply-form-equipment-col input {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .apply-form-quantity-btn {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .apply-form-quantity-input {
+    width: 2rem;
+    font-size: 0.8rem;
+  }
+
+  .apply-form-actions {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+  }
+
+  .apply-form-submit {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
 .required {
   color: #dc2626;
 }
@@ -492,6 +568,41 @@
   border: 1px solid #e2e8f0;
   border-radius: 6px;
   padding: 1.5rem 1.75rem;
+}
+
+.apply-form-phone-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.apply-form-phone-input:focus-within {
+  border-color: #0284c7;
+  outline: 1px solid #0284c7;
+}
+
+.apply-form-phone-prefix {
+  padding: 0.6rem 0.85rem;
+  font-size: 1rem;
+  color: #64748b;
+  background: #f8fafc;
+  border-right: 1px solid #e2e8f0;
+  border-radius: 6px 0 0 6px;
+}
+
+.apply-form-phone-input input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  padding: 0.6rem 0.85rem;
+  font-size: 1rem;
+  border-radius: 0 6px 6px 0;
+}
+
+.apply-form-phone-input input:focus {
+  outline: none;
 }
 
 .apply-form-hint-inline {
