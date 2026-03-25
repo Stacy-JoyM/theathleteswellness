@@ -307,12 +307,12 @@ export const ABOUT_PAGE = {
       intro: 'Suswa is designed for entry level athletes.',
       withinPlay: {
         beforeLink:
-          'This wellness package contains health cover (inpatient, outpatient, maternity, dental, optical, last expense, personal accident) and sporting equipment cover for when you compete, at Suswa entry limits—',
+          'This wellness package contains wellness support for all medical needs and sporting equipment cover to allow you to keep your head in the game, at Suswa entry limits—',
         showPackageBreakdownLink: true,
         afterLink: ' for amounts.',
       },
       postPlay:
-        'KES 12,000 cashback each membership year in good standing; withdraw when it is due or let it build. Step up a tier when you need bigger limits. Optional Liaison Wealth for trusts and money advice.',
+        'KES 12,000 cashback each membership year in good standing; withdraw when it is due or let it build. Step up a tier if you need bigger opportunities.',
     },
     {
       id: 'longonot',
@@ -320,7 +320,7 @@ export const ABOUT_PAGE = {
       intro: 'Longonot is designed for athletes who are stepping up training and competition.',
       withinPlay: {
         beforeLink:
-          'This wellness package contains health cover (inpatient, outpatient, maternity, dental, optical, last expense, personal accident) and sporting equipment cover for when you compete, at a middle level—',
+          'This wellness package contains wellness support for all medical needs and sporting equipment cover to allow you to keep your head in the game, at a middle level—',
         showPackageBreakdownLink: true,
         afterLink: '.',
       },
@@ -333,7 +333,7 @@ export const ABOUT_PAGE = {
       intro: 'Elgon is designed for high-performance athletes.',
       withinPlay: {
         beforeLink:
-          'This wellness package contains health cover (inpatient, outpatient, maternity, dental, optical, last expense, personal accident) and sporting equipment cover for when you compete, at limits suited to serious training and valuable equipment—',
+          'This wellness package contains wellness support for all medical needs and sporting equipment cover to allow you to keep your head in the game, at limits suited to serious training and valuable equipment—',
         showPackageBreakdownLink: true,
         afterLink: '.',
       },
@@ -346,7 +346,7 @@ export const ABOUT_PAGE = {
       intro: 'Kenya is designed for elite athletes and teams who want maximum cover.',
       withinPlay: {
         beforeLink:
-          'This wellness package contains health cover (inpatient, outpatient, maternity, dental, optical, last expense, personal accident) and sporting equipment cover for when you compete, at our top limits—',
+          'This wellness package contains wellness support for all medical needs and sporting equipment cover to allow you to keep your head in the game, at our top limits—',
         showPackageBreakdownLink: true,
         afterLink: '.',
       },
