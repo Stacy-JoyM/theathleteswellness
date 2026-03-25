@@ -259,9 +259,9 @@ export const LIAISON_FAMILY_OFFICE = {
   disclaimer: '*Annual Management Fee is 2.45% of the productive assets',
 }
 
-/** Liaison Pension section for application form */
+/** Wellness Post retirement Package section for application form */
 export const LIAISON_PENSION = {
-  title: 'Liaison Pension',
+  title: 'Wellness Post retirement Package',
   highlight: '4% guaranteed annual return',
   details: [
     'Individual Pension Plan (IPP) with tax-efficient savings for your retirement.',
